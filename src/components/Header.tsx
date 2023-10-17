@@ -1,9 +1,9 @@
 function Header() {
   return (
-    <header>
-      <h2>
+    <header className="h-screen uppercase text-white">
+      <h2 className="">
         Olá, eu sou <br />
-        <span>Danilo Bertolini</span><br />
+        <span className="text-lightBluePrimary">Danilo Bertolini</span><br />
         Desenvolvedor full stack
       </h2>
 
@@ -12,6 +12,7 @@ function Header() {
           LinkedIn
         </a>
       </button>
+
       <button>
         <a href="#">
           GitHub
@@ -21,4 +22,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Header;
