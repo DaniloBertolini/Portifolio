@@ -1,10 +1,10 @@
-import { Navbar, Header, About, Projects, Footer } from './components'
+import { Navbar, Home, About, Projects, Footer } from './components'
 
 function App() {
   return (
     <div className='bg-blackPrimary'>
       <Navbar />
-      <Header />
+      <Home />
       <main>
         <About />
         <Projects />

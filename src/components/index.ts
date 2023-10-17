@@ -1,12 +1,12 @@
 import About from "./About"
-import Header from "./Header"
+import Home from "./Home"
 import Navbar from "./Navbar"
 import Projects from "./Projects"
 import Footer from "./Footer"
 
 export {
   About,
-  Header,
+  Home,
   Navbar,
   Projects,
   Footer

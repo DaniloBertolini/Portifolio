@@ -1,6 +1,6 @@
-function Header() {
+function Home() {
   return (
-    <header className="h-screen uppercase text-white">
+    <section className="h-screen uppercase text-white">
       <h2 className="">
         Olá, eu sou <br />
         <span className="text-lightBluePrimary">Danilo Bertolini</span><br />
@@ -18,8 +18,8 @@ function Header() {
           GitHub
         </a>
       </button>
-    </header>
+    </section>
   )
 }
 
-export default Header;
+export default Home;
