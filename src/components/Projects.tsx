@@ -1,30 +1,39 @@
+import link from '/link.svg'
+import github from '/github.svg'
+import projectsArray from '../assets/projects'
+
 function Projects() {
   return (
-    <section>
-      <h3>Projetos</h3>
+    <section id="projects" className="w-[80%] mx-auto pt-36 mb-40">
+      <h3 className='text-5xl font-semibold py-10'>Projetos</h3>
       <ul>
-        <li>
-          <img src="#" alt="Foto Projeto 1" />
-          <h4>Nome do Projeto 1</h4>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
-          <span>Tecnologias usadas</span>
-          <button>
-            <a href="#">
-              Visualizar
-            </a>
-          </button>
+        {projectsArray.map((item, index) => (
+          <li className="flex items-center mb-20" key={ index }>
+          <div>
+            <h4 className="mb-10 text-xl font-semibold">{ item.title }</h4>
+            <p className='leading-relaxed mb-5'>{ item.description }</p>
+            <div className='flex justify-between'>
+              <div className='h-14 w-40 rounded-lg bg-gradient-to-r from-blueGradient to-purpleGradient p-[2px]'>
+                <button className='h-full w-full items-center justify-center bg-blackPrimary back rounded-md flex'>
+                  <img src={ link } alt="link logo" />
+                  <a href={item.link } target='_blank' className='pl-2 text-lg'>
+                    Visualizar
+                  </a>
+                </button>
+              </div>
+              <div className='h-14 w-40 rounded-lg bg-gradient-to-r from-blueGradient to-purpleGradient p-[2px]'>
+                <button className='h-full w-full items-center justify-center bg-blackPrimary back rounded-md flex'>
+                  <img src={ github } alt="github logo" />
+                  <a href={ item.github } target='_blank' className='pl-2 text-lg'>
+                    GitHub
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+          <img src={`/${ item.image }`} alt={`Foto Projeto ${index}`} className="w-[650px] ml-20 rounded-lg" />
         </li>
-        <li>
-          <img src="#" alt="Foto Projeto 2" />
-          <h4>Nome do Projeto 2</h4>
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy </p>
-          <span>Tecnologias usadas</span>
-          <button>
-            <a href="#">
-              Visualizar
-            </a>
-          </button>
-        </li>
+        ))}
       </ul>
     </section>
   )
