@@ -1,7 +1,9 @@
+import fotoDanilo from '/fotoDanilo.png'
+
 function About() {
   return (
     <section id="about" className='bg-blackSecondary h-screen flex items-center justify-center'>
-      <img src="/foto-danilo.png" alt="Foto Danilo"
+      <img src={ fotoDanilo } alt="Foto Danilo"
         className='w-[450px] h-[450px] rounded-full px-1 mr-32 border-l-2 border-r-2 border-lightBluePrimary hover:animate-pulse object-cover'
       />
       <div className='w-[650px]'>

@@ -31,7 +31,7 @@ function Projects() {
               </div>
             </div>
           </div>
-          <img src={`/${ item.image }`} alt={`Foto Projeto ${index}`} className="w-[650px] ml-20 rounded-lg" />
+          <img src={`${ item.image }`} alt={`Foto Projeto ${index}`} className="w-[650px] ml-20 rounded-lg" />
         </li>
         ))}
       </ul>
