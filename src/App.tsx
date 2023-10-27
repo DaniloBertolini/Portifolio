@@ -23,3 +23,5 @@ function App() {
 // https://www.figma.com/file/Yb9IBH56g7T1hdIyZ3BMNO/Desafios---Codel%C3%A2ndia?type=design&node-id=58198-756&mode=design
 
 // https://www.caioaugusto.dev/
+
+// https://bruno.art.br/blog/fazer-div-aparecer-desaparecer-ao-rolar-scroll-a-pagina-com-js-e-css/

@@ -5,7 +5,7 @@ function Contact() {
     <div id="contact" className='h-[50vh] bg-blackSecondary flex flex-col justify-center items-center'>
       <h3 className='text-5xl font-semibold'>Contatos</h3>
       <p className='text-center mt-6 mb-10 text-xl'>
-        Se quiser realiar um projeto ou conversar <br /> comigo, me mande um email: <br />
+        Se quiser realizar um projeto ou conversar <br /> comigo, me mande um email: <br />
         <span className='text-blue-500 underline'>danilocbertolini@gmail.com</span>
       </p>
       <div>

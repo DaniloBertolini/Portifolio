@@ -9,7 +9,7 @@ function Projects() {
       <ul>
         {projectsArray.map((item, index) => (
           <li className="flex items-center mb-20" key={ index }>
-          <div>
+          <div className='w-full'>
             <h4 className="mb-10 text-xl font-semibold">{ item.title }</h4>
             <p className='leading-relaxed mb-5'>{ item.description }</p>
             <div className='flex justify-between'>
