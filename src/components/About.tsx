@@ -4,7 +4,7 @@ function About() {
   return (
     <section id="about" className='bg-blackSecondary h-screen flex items-center justify-center'>
       <img src={ fotoDanilo } alt="Foto Danilo"
-        className='w-[450px] h-[450px] rounded-full px-1 mr-32 border-l-2 border-r-2 border-lightBluePrimary hover:animate-pulse object-cover'
+        className='w-[450px] h-[450px] rounded-full px-1 mr-32 border-l-2 border-r-2 border-lightBluePrimary object-cover'
       />
       <div className='w-[650px]'>
         <h3 className='font-bold text-5xl mb-10'>Sobre mim</h3>
