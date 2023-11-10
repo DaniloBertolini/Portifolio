@@ -1,8 +1,8 @@
-# [Portifolio](https://danilobertolini.github.io/Portifolio/)
+# :scroll: [Portifolio](https://danilobertolini.github.io/Portifolio/)
 
 Portifolio Pessoal
 
-## Tecnologias
+## :bomb: Tecnologias
 
 - [REACT](https://react.dev/)
 - [VITE](https://vitejs.dev/)
@@ -11,7 +11,7 @@ Portifolio Pessoal
 - [TYPESCRIPT](https://www.typescriptlang.org/)
 - [TAILWIND](https://tailwindcss.com/)
 
-## Como acessar
+## :books: Como acessar
   Pode acessar através desse [deploy](https://danilobertolini.github.io/Portifolio/), ou se preferir na máquina local, pode seguir abaixo.
   - Abra o terminal e faça o clone.
   ```bash
