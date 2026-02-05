@@ -1,12 +1,55 @@
+import { useState, useEffect } from 'react'
+
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const navLinks = [
+    { href: '#about', label: 'Sobre mim' },
+    { href: '#projects', label: 'Projetos' },
+    { href: '#contact', label: 'Contato' },
+  ]
+
   return (
-    <header>
-      <nav className="flex justify-between fixed items-center h-28 w-screen md:px-[6rem] sm:px-[4rem] px-[2rem] sm:text-[1.2rem] text-[0.8rem] opacity-[.99] backdrop-blur-sm">
-        <h1 className="text-lightBluePrimary">Portifólio</h1>
-        <ul className="flex md:gap-16 gap-5 text-white opacity-90">
-          <li><a href="#about" className="lg:hover:text-lightBluePrimary transition-all duration-200 ease-in-out">Sobre mim</a></li>
-          <li><a href="#projects" className="lg:hover:text-lightBluePrimary transition-all duration-200 ease-in-out">Projetos</a></li>
-          <li><a href="#contact" className="lg:hover:text-lightBluePrimary transition-all duration-200 ease-in-out">Contato</a></li>
+    <header className='fixed top-0 left-0 right-0 z-50'>
+      <nav className={`
+        flex justify-between items-center h-20
+        md:px-24 sm:px-16 px-6
+        transition-all duration-500
+        border-b
+        ${scrolled
+          ? 'bg-cyber-black/90 backdrop-blur-md border-neon-cyan/10'
+          : 'bg-transparent border-transparent'}
+      `}>
+        <a href='#' className='font-display text-lg tracking-[0.3em] uppercase text-neon-cyan
+                               hover:text-glow-cyan transition-all duration-300'>
+          {'<DB/>'}
+        </a>
+
+        <ul className='flex md:gap-10 gap-5'>
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className='group relative font-body text-sm md:text-base uppercase tracking-widest
+                           text-hud-gray hover:text-neon-cyan transition-all duration-300'
+              >
+                <span className='text-neon-cyan/0 group-hover:text-neon-cyan/100 transition-all mr-1
+                                 font-mono text-xs'>
+                  //
+                </span>
+                {link.label}
+                <span className='absolute -bottom-1 left-0 w-0 h-[1px] bg-neon-cyan
+                                 group-hover:w-full transition-all duration-300
+                                 shadow-neon-cyan' />
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

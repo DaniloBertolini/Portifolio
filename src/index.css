@@ -2,15 +2,259 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Rajdhani', sans-serif;
+  }
+
+  body {
+    background-color: #0A0A0F;
+    color: #E0E0FF;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(0, 240, 255, 0.3);
+    color: #00F0FF;
+  }
+}
+
+/* ============================================
+   SCROLLBAR — Cyberpunk Style
+   ============================================ */
 ::-webkit-scrollbar {
-    width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #5F5F5F;
-    border-radius: 10px;
+  background: linear-gradient(180deg, #00F0FF, #B026FF);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: rgb(14, 16, 18);
+  background: #0A0A0F;
+}
+
+/* ============================================
+   CUSTOM COMPONENT CLASSES
+   ============================================ */
+@layer components {
+
+  /* --- Neon Button --- */
+  .btn-neon {
+    @apply relative px-6 py-3 font-display text-sm uppercase tracking-widest
+           border border-neon-cyan text-neon-cyan
+           transition-all duration-300 ease-out;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .btn-neon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-neon:hover {
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.5), 0 0 30px rgba(0, 240, 255, 0.2);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.8);
+    background-color: rgba(0, 240, 255, 0.05);
+  }
+
+  .btn-neon:hover::before {
+    opacity: 1;
+  }
+
+  /* --- Neon Button Magenta variant --- */
+  .btn-neon-magenta {
+    @apply relative px-6 py-3 font-display text-sm uppercase tracking-widest
+           border border-neon-magenta text-neon-magenta
+           transition-all duration-300 ease-out;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .btn-neon-magenta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 0, 170, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .btn-neon-magenta:hover {
+    box-shadow: 0 0 15px rgba(255, 0, 170, 0.5), 0 0 30px rgba(255, 0, 170, 0.2);
+    text-shadow: 0 0 10px rgba(255, 0, 170, 0.8);
+    background-color: rgba(255, 0, 170, 0.05);
+  }
+
+  .btn-neon-magenta:hover::before {
+    opacity: 1;
+  }
+
+  /* --- Gaming Card --- */
+  .card-cyber {
+    @apply relative bg-cyber-surface border border-cyber-border
+           transition-all duration-500 overflow-hidden;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+  }
+
+  .card-cyber::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00F0FF, transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 10;
+  }
+
+  .card-cyber::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #FF00AA, transparent);
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 10;
+  }
+
+  .card-cyber:hover {
+    border-color: rgba(0, 240, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.08), inset 0 0 30px rgba(0, 240, 255, 0.03);
+    transform: translateY(-4px);
+  }
+
+  .card-cyber:hover::before,
+  .card-cyber:hover::after {
+    opacity: 1;
+  }
+
+  /* --- Section Heading with decorative line --- */
+  .heading-cyber {
+    @apply font-display text-4xl md:text-5xl font-bold uppercase tracking-wider text-hud-white;
+  }
+
+  .heading-cyber::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    margin-top: 16px;
+    background: linear-gradient(90deg, #00F0FF, #B026FF);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+
+  /* --- Glitch text effect --- */
+  .glitch {
+    position: relative;
+    animation: glitch-skew 4s infinite linear alternate-reverse;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch::before {
+    color: #00F0FF;
+    animation: glitch-effect 3s infinite linear alternate-reverse;
+    clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+    transform: translate(-2px, -1px);
+    opacity: 0.7;
+  }
+
+  .glitch::after {
+    color: #FF00AA;
+    animation: glitch-effect 2s infinite linear alternate-reverse;
+    clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+    transform: translate(2px, 1px);
+    opacity: 0.7;
+  }
+
+  /* --- Grid background pattern --- */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* --- Neon text glow --- */
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 40px rgba(0, 240, 255, 0.4);
+  }
+
+  .text-glow-magenta {
+    text-shadow: 0 0 10px rgba(255, 0, 170, 0.8), 0 0 40px rgba(255, 0, 170, 0.4);
+  }
+
+  .text-glow-green {
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.8), 0 0 40px rgba(57, 255, 20, 0.4);
+  }
+}
+
+/* ============================================
+   KEYFRAME ANIMATIONS
+   ============================================ */
+@keyframes glitch-effect {
+  0% { transform: translate(0); }
+  20% { transform: translate(-3px, 3px); }
+  40% { transform: translate(-3px, -3px); }
+  60% { transform: translate(3px, 3px); }
+  80% { transform: translate(3px, -3px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(0deg); }
+  21% { transform: skew(1deg); }
+  22% { transform: skew(0deg); }
+  80% { transform: skew(0deg); }
+  81% { transform: skew(-1deg); }
+  82% { transform: skew(0deg); }
+  100% { transform: skew(0deg); }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+@layer utilities {
+  .clip-corner {
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+  }
+
+  .clip-corner-sm {
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-600 {
+    animation-delay: 600ms;
+  }
 }
